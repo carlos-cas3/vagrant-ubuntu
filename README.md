@@ -39,30 +39,50 @@ ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
 ssh-copy-id vagrant@client1
 ssh-copy-id vagrant@client2
 ```
+- yes fingerprint 
+- password: vagrant
+
+
 ### Verificar acceso SSH sin contraseña 
 
 ```bash
 ssh client1
 ssh client2
+
 ```
 
+
+
 ### Crear archivo hosts
+
+```bash
+cd ~/PCyP
+touch hosts
+```
 
 ```text
 master slots=2
 client1 slots=2
 client2 slots=2
 
- #Este archivo debe estar en el mismo directorio desde donde se ejecutará mpirun (o indicar su ruta completa al usar --hostfile).
-
 ```
+Este archivo debe estar en el mismo directorio desde donde se ejecutará mpirun (o indicar su ruta completa al usar --hostfile).
+
+
 
 ### Probar MPI
-
 
 ```bash
 mpirun -np 6 --hostfile hosts hostname
 ```
 
+### Ejemplo
+Buscar en la carpeta llamada Ejemplo
 
+```bash
+touch histograma_mpi.c 
+nano histograma_mpi.c 
+mpicc histograma_mpi.c -o histograma_mpi
+mpirun -np 6 --hostfile hosts ./histograma_mpi
+```
 
