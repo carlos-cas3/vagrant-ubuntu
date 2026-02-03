@@ -53,8 +53,9 @@ master slots=2
 client1 slots=2
 client2 slots=2
 
-- Este archivo debe estar en el mismo directorio desde donde se ejecutará mpirun (o indicar su ruta completa al usar --hostfile).
+ #Este archivo debe estar en el mismo directorio desde donde se ejecutará mpirun (o indicar su ruta completa al usar --hostfile).
 
+```
 
 ### Probar MPI
 
