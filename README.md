@@ -22,3 +22,46 @@ vagrant ssh master
 vagrant ssh client1
 vagrant ssh client2
 ```
+
+
+## Uso con MPI (MASTER)
+
+Para ejecutar aplicaciones usando MPI en el clúster (master + clients), siga los pasos a continuación.
+
+### Crear la clave SSH (solo una vez, en el nodo master)
+
+```bash
+ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
+```
+### Copiar la clave pública 
+
+```bash
+ssh-copy-id vagrant@client1
+ssh-copy-id vagrant@client2
+```
+### Verificar acceso SSH sin contraseña 
+
+```bash
+ssh client1
+ssh client2
+```
+
+### Crear archivo hosts
+
+```text
+master slots=2
+client1 slots=2
+client2 slots=2
+
+- Este archivo debe estar en el mismo directorio desde donde se ejecutará mpirun (o indicar su ruta completa al usar --hostfile).
+
+
+### Probar MPI
+
+
+```bash
+mpirun -np 6 --hostfile hosts hostname
+```
+
+
+
