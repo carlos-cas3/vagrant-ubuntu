@@ -23,15 +23,25 @@ vagrant ssh master
 vagrant ssh client1
 vagrant ssh client2
 ```
+Comprobar si existe la sincronizacion creando un archivo de prueba
 
+```bash
+touch prueba.txt
+```
+Caso que no aparezca, colocar manualmente en cada client:
 
-## Uso con MPI (MASTER)
+```bash
+sudo mount master:/home/vagrant/PCyP /home/vagrant/PCyP
+```
+
+## Uso con MPI (Solo en el MASTER)
 
 Para ejecutar aplicaciones usando MPI en el clúster (master + clients), siga los pasos a continuación.
 
 ### Crear la clave SSH (solo una vez, en el nodo master)
 
 ```bash
+cd ~/.ssh
 ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
 ```
 ### Copiar la clave pública 
