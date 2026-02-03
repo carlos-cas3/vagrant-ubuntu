@@ -15,6 +15,7 @@ vagrant ssh master -c "bash /vagrant/provision_master.sh"
 vagrant ssh client1 -c "bash /vagrant/provision_client.sh"
 vagrant ssh client2 -c "bash /vagrant/provision_client.sh"
 ```
+Es importante que se monte correctamente el provision_client, esperar si es necesario
 
 ## Acceso
 ```bash
