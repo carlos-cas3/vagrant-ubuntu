@@ -1,0 +1,70 @@
+# General (master y clients)
+
+sudo apt install net-tools
+sudo apt install openmpi-bin openmpi-common libopenmpi-dev openmpi-doc
+sudo apt install openssh-client openssh-server
+sudo apt install nfs-kernel-server
+
+
+En nano /etc/hosts  se agrega: 
+
+10.0.0.1	master
+10.0.0.2	client1
+10.0.0.3	client2
+
+hostnamectl set-hostname master 
+
+Reiniciar, para el cambio de nombre del host 
+
+ssh-keygen -t rsa ( Dale enter 3 veces)
+
+cp id_rsa authorized_keys
+
+(Los demas clientes deben llegar hasta aqui tambien )
+
+# master 
+
+ssh-copy-id client1 
+ssh-copy-id client2
+
+ssh client1 'chmod 700 .ssh; chmod 640 .ssh/authorized_keys'
+ssh client2 'chmod 700 .ssh; chmod 640 .ssh/authorized_keys'
+
+
+
+# client s
+
+sudo nano /etc/ssh/sshd_config y se agrega:
+
+PubkeyAuthentication yes
+RSAAuthentication yes
+
+reiniciar el ssh 
+
+
+# master 
+
+mkdir PCyP
+sudo nano /etc/exports y se agrega:
+/home/vagrant/PCyP client1(rw,sync,no_subtree_check) client2(rw,sync,no_subtree_check>
+
+sudo exportfs -a 
+
+sudo systemctl restart nfs-kernel-server
+sudo systemctl enable nfs-kernel-server
+
+
+# clients 
+
+cd ~
+mkdir PCyP
+
+sudo mount master:/home/vagrant/PCyP /home/vagrant/PCyP
+
+
+
+
+
+
+
+
