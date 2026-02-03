@@ -3,10 +3,11 @@
 - Vagrant
 
 ## Uso
-- git clone <repo>
-- cd <repo>
+```bash
+- git clone https://github.com/carlos-cas3/vagrant-ubuntu.git
+- cd vagrant-ubuntu
 - vagrant up
-
+````
 
 ## Instalar provisions
 ```bash
