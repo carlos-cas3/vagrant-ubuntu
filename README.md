@@ -59,7 +59,7 @@ ssh client2
 cd ~/PCyP
 touch hosts
 ```
-
+Dentro del archivo hosts añadir:
 ```text
 master slots=2
 client1 slots=2
