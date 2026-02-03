@@ -9,12 +9,15 @@
 
 
 ## Instalar provisions
+```bash
 - vagrant ssh master -c "bash /vagrant/provision_master.sh"
 - vagrant ssh client1 -c "bash /vagrant/provision_client.sh"
 - vagrant ssh client2 -c "bash /vagrant/provision_client.sh"
+```
 
 ## Acceso
+```bash
 - vagrant ssh master
 - vagrant ssh client1
 - vagrant ssh client2
-
+```
