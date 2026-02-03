@@ -39,7 +39,7 @@ ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
 ssh-copy-id vagrant@client1
 ssh-copy-id vagrant@client2
 ```
-- yes fingerprint 
+- yes (fingerprint)
 - password: vagrant
 
 
@@ -76,13 +76,17 @@ Este archivo debe estar en el mismo directorio desde donde se ejecutará mpirun 
 mpirun -np 6 --hostfile hosts hostname
 ```
 
-### Ejemplo
-Buscar en la carpeta llamada Ejemplo
-
+## Ejemplo con MPI (MASTER)
+Se crea en la carpeta compartida (PCyP):
 ```bash
 touch histograma_mpi.c 
 nano histograma_mpi.c 
+```
+
+Se copia el código, compila y ejecuta:
+```bash
 mpicc histograma_mpi.c -o histograma_mpi
 mpirun -np 6 --hostfile hosts ./histograma_mpi
+
 ```
 
