@@ -20,7 +20,7 @@ Vagrant.configure("2") do |config|
         client1.vm.network "private_network", ip: "10.0.0.2", mac: "080027000002"
         client1.vm.provider "virtualbox" do |vb|
             vb.memory = 2048
-            vb.cpus = 1
+            vb.cpus = 2
         end
         client1.vm.provision "shell", path: "provision_general.sh", name: "general"
     end
@@ -31,7 +31,7 @@ Vagrant.configure("2") do |config|
         client2.vm.network "private_network", ip: "10.0.0.3", mac: "080027000003"
         client2.vm.provider "virtualbox" do |vb|
             vb.memory = 2048
-            vb.cpus = 1
+            vb.cpus = 2
         end
         client2.vm.provision "shell", path: "provision_general.sh", name: "general"
     end
